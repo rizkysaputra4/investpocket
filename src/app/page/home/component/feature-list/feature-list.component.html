@@ -1,0 +1,17 @@
+<div>
+
+    <h3>Why Mandiri Gold?</h3>
+
+    <div class="row">
+
+        <ng-container *ngFor="let item of items; let i = index">
+            <app-feature-card [item]="item" class="col p-3"></app-feature-card>
+            <div *ngIf="i==2" class="w-100"></div>
+        </ng-container>
+
+    </div>
+
+    <h3 class="mt-4 mb-4">Let's join us for free</h3>
+    <button class="register-btn">Register</button>
+
+</div>
