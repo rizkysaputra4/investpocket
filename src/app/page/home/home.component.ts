@@ -7,10 +7,12 @@ import ProductType from '../../model/product-type';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  items!: ProductType[];
+  items: ProductType[] = [];
+  carouselImages: string[] = [];
 
   constructor() {
     this.items = this.getReasons();
+    this.initCarouselImages();
   }
 
   ngOnInit(): void {}
@@ -32,5 +34,10 @@ export class HomeComponent implements OnInit {
     ];
 
     return result;
+  }
+
+  initCarouselImages() {
+    let images = [''];
+    this.carouselImages.push();
   }
 }
