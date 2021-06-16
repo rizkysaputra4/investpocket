@@ -45,17 +45,17 @@ export class HomeComponent implements OnInit {
       new CarouselImage(
         'image 1',
         'Invest your assets and wealth in Gold',
-        'carousel-1.png'
+        'carousel-1.jpg'
       ),
       new CarouselImage(
         'image 2',
         'Invest your assets and wealth in Silver',
-        'carousel-2.png'
+        'carousel-2.jpg'
       ),
       new CarouselImage(
         'image 3',
         'Invest your assets and wealth in Platinum',
-        'carousel-3.png'
+        'carousel-3.jpg'
       ),
     ];
     this.carouselImages = images;
