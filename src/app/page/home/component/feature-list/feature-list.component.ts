@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import ProductType from 'src/app/model/product-type';
+import Benefit from '../../model/benefit';
 
 @Component({
   selector: 'app-feature-list',
@@ -7,7 +7,7 @@ import ProductType from 'src/app/model/product-type';
   styleUrls: ['./feature-list.component.scss'],
 })
 export class FeatureListComponent implements OnInit {
-  @Input() items!: ProductType[];
+  @Input() items!: Benefit[];
 
   constructor() {}
 

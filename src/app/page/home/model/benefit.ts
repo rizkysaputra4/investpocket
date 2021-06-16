@@ -1,4 +1,4 @@
-export default class ProductType {
+export default class Benefit {
   title: string;
   description: string;
 
