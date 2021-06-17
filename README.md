@@ -1,7 +1,8 @@
 # Goldpocket
 
-Visit [https://goldpocket.herokuapp.com/](https://goldpocket.herokuapp.com/) for the app Demo
-wait time is about 40-60 seconds to start the server.
+Visit [https://goldpocket.herokuapp.com/](https://goldpocket.herokuapp.com/) for the app Demo.
+
+waiting time is about 40-60 seconds to start the server.
 
 ## Sample Result
 
