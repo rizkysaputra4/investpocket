@@ -4,7 +4,7 @@ Visit [https://goldpocket.herokuapp.com/](https://goldpocket.herokuapp.com/) for
 
 ## Sample Result
 
-![screenshoot](./image/1.png)
+![screenshoot](./image/Carousel.png)
 ![screenshoot](./image/2.png)
 ![screenshoot](./image/3.png)
 
