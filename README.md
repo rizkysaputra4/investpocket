@@ -1,6 +1,7 @@
 # Goldpocket
 
 Visit [https://goldpocket.herokuapp.com/](https://goldpocket.herokuapp.com/) for the app Demo
+wait time is about 40-60 seconds to start the server.
 
 ## Sample Result
 
@@ -24,7 +25,7 @@ git clone https://git.enigmacamp.com/enigma-camp/class-mandiri/rizky-saputra/ang
 3.
 
 ```
-cd goldpocket
+cd challenge-angular
 ```
 
 4.
@@ -36,7 +37,7 @@ npm install
 5.
 
 ```
-npm start
+npm devStart
 ```
 
 6. Open `localhost:4200` on your browser.
