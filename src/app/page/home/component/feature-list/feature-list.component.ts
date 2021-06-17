@@ -12,4 +12,14 @@ export class FeatureListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  isDifferentSection(i: number): boolean {
+    if (i != 0) {
+      if (this.items[i].type !== this.items[i - 1].type) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }

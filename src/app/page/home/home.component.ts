@@ -25,16 +25,30 @@ export class HomeComponent implements OnInit {
     let result: Benefit[] = [
       new Benefit(
         'Delivery',
-        'We have delivery service to alll city in Indonesia'
+        'We have delivery service to alll city in Indonesia',
+        'service'
       ),
       new Benefit(
         'Legality',
-        'We commit to keep your trusted with legality transactions.'
+        'We commit to keep your trusted with legality transactions.',
+        'service'
       ),
-      new Benefit('Price', 'Good quality with the best prices'),
-      new Benefit('Reward', 'More transaction more point and reward'),
-      new Benefit('Transaction', 'Our transaction is simple and secure'),
-      new Benefit('Brand', 'Our product is the best on quality and brand'),
+      new Benefit('Price', 'Good quality with the best prices', 'service'),
+      new Benefit(
+        'Reward',
+        'More transaction more point and reward',
+        'product'
+      ),
+      new Benefit(
+        'Transaction',
+        'Our transaction is simple and secure',
+        'product'
+      ),
+      new Benefit(
+        'Brand',
+        'Our product is the best on quality and brand',
+        'product'
+      ),
     ];
 
     this.items = result;
