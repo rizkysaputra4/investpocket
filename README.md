@@ -7,7 +7,10 @@ waiting time is about 40-60 seconds to start the server.
 ## Sample Result
 
 ![screenshoot](./image/1.png)
+
 ![screenshoot](./image/2.png)
+
+![screenshoot](./image/3.png)
 
 ## Prequisities:
 
