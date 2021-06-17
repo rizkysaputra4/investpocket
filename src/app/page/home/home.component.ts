@@ -77,9 +77,9 @@ export class HomeComponent implements OnInit {
 
   initProduct() {
     let product = [
-      new Product('Platinum Investment', '1.png'),
-      new Product('Gold Investment', '2.png'),
-      new Product('Silver Investment', '3.png'),
+      new Product('platinum investment', '1.png'),
+      new Product('gold investment', '2.png'),
+      new Product('silver investment', '3.png'),
     ];
     this.products = product;
   }
