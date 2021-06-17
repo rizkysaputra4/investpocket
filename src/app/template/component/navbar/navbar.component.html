@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav appNsNavbar [bgColor]="bgColor">
   <div class="container-fluid">
     <a class="navbar-brand px-2 mx-0" href="#">
       <img
-        src="../../../../assets/images/mandiri-logo.jpeg"
+        src="../../../../assets/images/mandiri-logo.png"
         width="100"
         height="50"
         alt="mandiri-logo"
@@ -22,13 +22,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Platinum</a>
+          <a
+            appBsNavbarBtn
+            [textColor]="navTextColor"
+            aria-current="page"
+            href="#"
+            >Platinum</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Gold</a>
+          <a appBsNavbarBtn [textColor]="navTextColor" href="#">Gold</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Silver</a>
+          <a appBsNavbarBtn [textColor]="navTextColor" href="#">Silver</a>
         </li>
       </ul>
       <form class="d-flex">
