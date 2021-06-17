@@ -5,12 +5,15 @@ import { Directive } from '@angular/core';
   selector: '[appBsNavbarBtn]',
 })
 export class BsNavbarBtnDirective {
-  @Input() textColor: string = 'text-dark';
-
+  @Input() textColor: string = 'text-light';
+  @Input() format: string = '';
   constructor() {}
 
   @HostBinding('class')
   get applyNavBtnStyle(): string {
-    return `nav-link ${this.textColor}`;
+    if (this.textColor == '') {
+      this.textColor = 'text-light';
+    }
+    return `nav-link ${this.textColor} ${this.format}`;
   }
 }
