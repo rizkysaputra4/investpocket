@@ -14,45 +14,10 @@ export class HomeComponent implements OnInit {
   products: Product[] = [];
 
   constructor() {
-    this.initReasons();
     this.initCarouselImages();
-    this.initProduct();
   }
 
   ngOnInit(): void {}
-
-  initReasons() {
-    let result: Benefit[] = [
-      new Benefit(
-        'Delivery',
-        'We have delivery service to alll city in Indonesia',
-        'service'
-      ),
-      new Benefit(
-        'Legality',
-        'We commit to keep your trusted with legality transactions.',
-        'service'
-      ),
-      new Benefit('Price', 'Good quality with the best prices', 'service'),
-      new Benefit(
-        'Reward',
-        'More transaction more point and reward',
-        'product'
-      ),
-      new Benefit(
-        'Transaction',
-        'Our transaction is simple and secure',
-        'product'
-      ),
-      new Benefit(
-        'Brand',
-        'Our product is the best on quality and brand',
-        'product'
-      ),
-    ];
-
-    this.items = result;
-  }
 
   initCarouselImages() {
     let images = [
@@ -73,14 +38,5 @@ export class HomeComponent implements OnInit {
       ),
     ];
     this.carouselImages = images;
-  }
-
-  initProduct() {
-    let product = [
-      new Product('platinum investment', '1.png'),
-      new Product('gold investment', '2.png'),
-      new Product('silver investment', '3.png'),
-    ];
-    this.products = product;
   }
 }

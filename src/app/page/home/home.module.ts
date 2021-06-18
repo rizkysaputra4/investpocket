@@ -6,6 +6,8 @@ import { FeatureListComponent } from './component/feature-list/feature-list.comp
 import { ProductsComponent } from './component/products/products.component';
 import { TemplateModule } from 'src/app/template/template.module';
 import { CarouselComponent } from './component/carousel/carousel.component';
+import { BenefitService } from './service/benefit/benefit.service';
+import { ProductService } from './service/product/product.service';
 
 @NgModule({
   declarations: [
@@ -17,5 +19,6 @@ import { CarouselComponent } from './component/carousel/carousel.component';
   ],
   imports: [CommonModule, TemplateModule],
   exports: [HomeComponent],
+  providers: [BenefitService, ProductService],
 })
 export class HomeModule {}

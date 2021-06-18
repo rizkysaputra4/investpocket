@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import Benefit from '../../model/benefit';
+import { BenefitService } from '../../service/benefit/benefit.service';
 
 @Component({
   selector: 'app-feature-list',
@@ -7,9 +8,11 @@ import Benefit from '../../model/benefit';
   styleUrls: ['./feature-list.component.scss'],
 })
 export class FeatureListComponent implements OnInit {
-  @Input() items!: Benefit[];
+  items!: Benefit[];
 
-  constructor() {}
+  constructor(private readonly benefitService: BenefitService) {
+    this.items = benefitService.getBenefit();
+  }
 
   ngOnInit(): void {}
 
