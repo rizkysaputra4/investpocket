@@ -8,6 +8,7 @@ import { TemplateModule } from 'src/app/template/template.module';
 import { CarouselComponent } from './component/carousel/carousel.component';
 import { BenefitService } from './service/benefit/benefit.service';
 import { ProductService } from './service/product/product.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ProductService } from './service/product/product.service';
     ProductsComponent,
     CarouselComponent,
   ],
-  imports: [CommonModule, TemplateModule],
+  imports: [CommonModule, TemplateModule, SharedModule],
   exports: [HomeComponent],
   providers: [BenefitService, ProductService],
 })
