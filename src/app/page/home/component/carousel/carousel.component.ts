@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import CarouselImage from '../../model/main-carousel';
+import { CarouselService } from '../../service/carousel/carousel.service';
 
 @Component({
   selector: 'app-carousel',
@@ -7,9 +8,11 @@ import CarouselImage from '../../model/main-carousel';
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit {
-  @Input() carouselImages!: CarouselImage[];
+  carouselImages!: CarouselImage[];
 
-  constructor() {}
+  constructor(private readonly carouselService: CarouselService) {
+    this.carouselImages = carouselService.getContent();
+  }
 
   ngOnInit(): void {}
 }
