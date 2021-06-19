@@ -2,15 +2,17 @@
 
 <div class="product-container w-100">
   <h3 class="pt-3" style="text-align: center">Our Products</h3>
-  <div class="row pb-3 px-3">
-    <div class="col-sm pb-3" *ngFor="let product of products">
-      <div class="card">
-        <div class="card-body text-center">
-          <img
-            src="../../../../../assets/images/{{ product.image }} "
-            alt="Platinum Investment"
-          />
-          <h5>{{ product.title | toTitleCase }}</h5>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-sm py-4" *ngFor="let product of products">
+        <div class="card">
+          <div class="card-body text-center">
+            <img
+              src="../../../../../assets/images/{{ product.image }} "
+              alt="Platinum Investment"
+            />
+            <h5>{{ product.title | toTitleCase }}</h5>
+          </div>
         </div>
       </div>
     </div>
