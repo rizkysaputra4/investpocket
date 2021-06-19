@@ -11,8 +11,13 @@ export class LoginService {
 
   loggedIn(userName: string, password: string): boolean {
     if (userName == 'boymen' && password == 'boymen') {
-      sessionStorage.setItem('userName', userName);
-      sessionStorage.setItem('password', password);
+      sessionStorage.setItem(
+        'USER-DATA',
+        JSON.stringify({
+          username: userName,
+          password: password,
+        })
+      );
       return true;
     }
     alert('try email: boymen, password: boymen');
