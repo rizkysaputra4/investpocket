@@ -10,7 +10,6 @@ export class LoginService {
   constructor() {}
 
   loggedIn(userName: string, password: string): boolean {
-    console.log(userName, password);
     if (userName == 'boymen' && password == 'boymen') {
       sessionStorage.setItem('userName', userName);
       sessionStorage.setItem('password', password);
