@@ -16,7 +16,7 @@ export class BenefitService {
     let result: Benefit[] = [
       new Benefit(
         'Delivery',
-        'We have delivery service to alll city in Indonesia',
+        'We have delivery service to all city in Indonesia',
         'service'
       ),
       new Benefit(
