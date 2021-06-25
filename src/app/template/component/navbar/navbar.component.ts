@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,12 +6,18 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  bgColor: string = '';
-  navTextColor: string = '';
+  bgColor: string = 'bg-light';
+  @Input() transparentNavbar: string = '';
+  @Input() navTextColor: string = '';
 
   constructor() {}
   public isCollapsed = false;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.transparentNavbar != '') {
+      this.bgColor = 'bg-transparent';
+      this.navTextColor = 'text-light';
+    }
+  }
 
   @HostListener('window:scroll', []) onWindowScroll() {
     // do some stuff here when the window is scrolled
@@ -21,12 +27,14 @@ export class NavbarComponent implements OnInit {
       document.body.scrollTop ||
       0;
     console.log(verticalOffset);
-    if (verticalOffset > 50) {
-      this.bgColor = 'bg-light';
-      this.navTextColor = 'text-dark';
-    } else {
-      this.bgColor = 'bg-transparent';
-      this.navTextColor = 'text-light';
+    if (this.transparentNavbar != '') {
+      if (verticalOffset > 50) {
+        this.bgColor = 'bg-light';
+        this.navTextColor = 'text-dark';
+      } else {
+        this.bgColor = 'bg-transparent';
+        this.navTextColor = 'text-light';
+      }
     }
   }
 }
