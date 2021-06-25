@@ -14,6 +14,13 @@ const routes: Routes = [
             return m.TransactionModule;
           }),
       },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./profile/profile.module').then((m) => {
+            return m.ProfileModule;
+          }),
+      },
     ],
   },
 ];
