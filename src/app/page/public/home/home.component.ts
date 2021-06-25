@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import CarouselImage from 'src/app/page/home/model/main-carousel';
+import CarouselImage from 'src/app/page/public/home/model/main-carousel';
 import Product from './model/product';
 import Benefit from './model/benefit';
 
