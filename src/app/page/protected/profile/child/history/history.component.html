@@ -4,12 +4,32 @@
       class="card"
       *ngFor="let transaction of [].constructor(3); let i = index"
     >
-      <div class="card-body">
-        <h5>Buy</h5>
-        <h6>Product</h6>
-        <p>Product Name: Gold</p>
-        <p>Qty 1 Gram</p>
-      </div>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Buy</th>
+            <th style="width: 25%" scope="col">25 March 2021</th>
+          </tr>
+          <tr>
+            <th>Product</th>
+          </tr>
+        </thead>
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td scope="row">Product name: Gold</td>
+            <td>Total Price</td>
+          </tr>
+          <tr>
+            <td scope="row">Quantity 1 gr</td>
+            <th>Rp. 850.000</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td><button class="btn btn-primary">Detalis</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </app-profile>

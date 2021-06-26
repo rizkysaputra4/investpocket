@@ -11,13 +11,25 @@ password    : boymen
 
 ## Sample Result
 
-![screenshoot](./image/1.png)
+path: /
 
-![screenshoot](./image/2.png)
+<img src="./image/1.png" height="300" />
 
-![screenshoot](./image/3.png)
+path: /login
 
-![screenshoot](./image/4.png)
+<img src="./image/2.png" height="300" />
+
+path: /p/transaction
+
+<img src="./image/3.png" height="300" />
+
+path: /p/profile
+
+<img src="./image/4.png" height="300" />
+
+path: /p/profile/history
+
+<img src="./image/5.png" height="300" />
 
 ## Prequisities:
 
