@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from '../../model/User';
 import { LoginService } from '../../service/login/login.service';
 
 @Component({
@@ -34,17 +36,23 @@ export class LoginFormComponent implements OnInit {
     this.userName = this.loginForm.value.userName;
     this.password = this.loginForm.value.password;
 
-    let isCorrect = this.loginService.loggedIn(this.userName, this.password);
-    if (isCorrect) {
-      this.router.navigate(['']);
-    }
-
-    let login = this.loginService.loggedIn(this.userName, this.password);
+    let login: Observable<User[]> = this.loginService.loggedIn(
+      this.userName,
+      this.password
+    );
 
     login.subscribe(
       (data) => {
-        console.log('data sended');
-        console.log(data);
+        for (let i = 0; i < data.length; i++) {
+          console.log(data[i]);
+          if (
+            data[i].userName == this.userName &&
+            data[i].password == this.password
+          ) {
+            this.router.navigate(['']);
+            return;
+          }
+        }
       },
       (err) => {
         console.log(err);

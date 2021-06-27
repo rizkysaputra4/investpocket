@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { retry, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -13,6 +14,11 @@ export class LoginService {
   constructor(private readonly http: HttpClient) {}
 
   loggedIn(userName: string, password: string): Observable<any> {
-    return this.http.get(`${environment.apiSource}user?userName=${userName}`);
+    return this.http
+      .get(`${environment.apiSource}user?userName=${userName}`)
+      .pipe(
+        retry(2),
+        map((res: any) => res)
+      );
   }
 }
