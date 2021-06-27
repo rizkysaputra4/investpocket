@@ -47,6 +47,10 @@ export class LoginFormComponent implements OnInit {
             data[i].password == this.password
           ) {
             this.router.navigate(['']);
+            sessionStorage.setItem(
+              'credentials',
+              JSON.stringify({ token: 'This is a token' })
+            );
             return;
           }
         }
