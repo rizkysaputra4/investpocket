@@ -3,7 +3,7 @@
     <div class="row text-center mx-1">
       <div
         class="p-2 bd-highlight card m-3 pocketCard col-auto"
-        *ngFor="let pocket of pocketList | async; let i = index"
+        *ngFor="let pocket of pocketList; let i = index"
       >
         <div class="card-body">
           <h3>{{ pocket.name | pocketName }}</h3>

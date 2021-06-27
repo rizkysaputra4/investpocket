@@ -40,10 +40,7 @@
             formControlName="type"
             [(ngModel)]="clickedPocketData"
           >
-            <option
-              *ngFor="let option of pocketList | async"
-              [ngValue]="option"
-            >
+            <option *ngFor="let option of pocketList" [ngValue]="option">
               {{ option.name }}
             </option>
           </select>

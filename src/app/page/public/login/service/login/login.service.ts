@@ -13,11 +13,14 @@ export class LoginService {
 
   constructor(private readonly http: HttpClient) {}
 
-  loggedIn(userName: string, password: string): Promise<any> {
-    return fetch(`${environment.apiSource}user?userName=${userName}`)
-      .then((res) => {
-        return res.json();
-      })
-      .catch((err) => console.log(err));
+  loggedIn(userName: string, password: string): Observable<any> {
+    return this.http
+      .get(`${environment.apiSource}user?userName=${userName}`)
+      .pipe(
+        retry(2),
+        map((data) => {
+          return data;
+        })
+      );
   }
 }

@@ -13,7 +13,7 @@ export class DealComponent implements OnInit {
   data: any = {};
   deal: FormGroup = new FormGroup({});
   transactionType: string = '';
-  pocketList: Promise<any> = new Promise((res) => res);
+  pocketList: Pocket[] = [];
   clickedPocketData: Pocket = {
     id: '',
     name: '',
@@ -39,22 +39,17 @@ export class DealComponent implements OnInit {
 
     this.data = this.service.getData();
 
-    this.pocketList = new Promise((resolve) => {
-      this.service
-        .getPocketList()
-        .then((data: Pocket[]) => {
-          console.log(data);
-          resolve(
-            data.filter((pocket) => {
-              return (
-                pocket.productId ===
-                this.activatedRoute.snapshot.paramMap.get('productId')
-              );
-            })
+    this.service.getPocketList().subscribe(
+      (data: Pocket[]) => {
+        this.pocketList = data.filter((pocket) => {
+          return (
+            pocket.productId ===
+            this.activatedRoute.snapshot.paramMap.get('productId')
           );
-        })
-        .catch((err) => console.log(err));
-    });
+        });
+      },
+      (err) => console.log(err)
+    );
 
     this.product =
       this.activatedRoute.snapshot.paramMap.get('productId') || 'gold';
@@ -73,16 +68,17 @@ export class DealComponent implements OnInit {
       this.clickedPocketData.qty -= data.qty;
     }
 
-    this.service
-      .updatePocket(this.clickedPocketData)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-    this.service
-      .makeDeal(this.deal.value)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+    this.service.updatePocket(this.clickedPocketData).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (err) => console.log(err)
+    );
 
-    console.log(this.clickedPocketData);
+    this.service.makeDeal(this.deal.value).subscribe(
+      (data) => console.log(data),
+      (err) => console.log(err)
+    );
   }
 
   changeClickedPocket(pocket: Pocket) {

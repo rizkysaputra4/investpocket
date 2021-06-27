@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PocketNamePipe } from './pipe/pocket-name.pipe';
 import { PricePocketPipe } from './pipe/price-pocket.pipe';
 import { DealComponent } from './child/deal/deal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DealComponent } from './child/deal/deal.component';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [TransactionService],
 })
