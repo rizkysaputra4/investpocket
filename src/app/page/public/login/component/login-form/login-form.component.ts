@@ -36,13 +36,10 @@ export class LoginFormComponent implements OnInit {
     this.userName = this.loginForm.value.userName;
     this.password = this.loginForm.value.password;
 
-    let login: Observable<User[]> = this.loginService.loggedIn(
-      this.userName,
-      this.password
-    );
+    let login = this.loginService.loggedIn(this.userName, this.password);
 
-    login.subscribe(
-      (data) => {
+    login
+      .then((data) => {
         for (let i = 0; i < data.length; i++) {
           console.log(data[i]);
           if (
@@ -53,10 +50,8 @@ export class LoginFormComponent implements OnInit {
             return;
           }
         }
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+        alert('try username: boymen, password: boymen');
+      })
+      .catch((err) => console.log(err));
   }
 }
