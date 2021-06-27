@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -7,20 +10,9 @@ export class LoginService {
   userName: string = '';
   password: string = '';
 
-  constructor() {}
+  constructor(private readonly http: HttpClient) {}
 
-  loggedIn(userName: string, password: string): boolean {
-    if (userName == 'boymen' && password == 'boymen') {
-      sessionStorage.setItem(
-        'USER-DATA',
-        JSON.stringify({
-          username: userName,
-          password: password,
-        })
-      );
-      return true;
-    }
-    alert('try email: boymen, password: boymen');
-    return false;
+  loggedIn(userName: string, password: string): Observable<any> {
+    return this.http.get(`${environment.apiSource}user?userName=${userName}`);
   }
 }

@@ -6,10 +6,17 @@ import { ToRegisterComponent } from './component/to-register/to-register.compone
 import { LoginService } from './service/login/login.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginRoutingModule } from './login-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [LoginFormComponent, LoginComponent, ToRegisterComponent],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, LoginRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    LoginRoutingModule,
+    HttpClientModule,
+  ],
   exports: [LoginFormComponent, LoginComponent],
   providers: [LoginService],
 })

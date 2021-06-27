@@ -38,5 +38,17 @@ export class LoginFormComponent implements OnInit {
     if (isCorrect) {
       this.router.navigate(['']);
     }
+
+    let login = this.loginService.loggedIn(this.userName, this.password);
+
+    login.subscribe(
+      (data) => {
+        console.log('data sended');
+        console.log(data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
