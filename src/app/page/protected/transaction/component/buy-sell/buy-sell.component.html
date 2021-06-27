@@ -10,7 +10,7 @@
       aria-controls="nav-home"
       aria-selected="true"
     >
-      Buy Gold
+      Buy {{ product | titlecase }}
     </button>
     <button
       class="nav-link"
@@ -22,7 +22,7 @@
       aria-controls="nav-profile"
       aria-selected="false"
     >
-      Sell Gold
+      Sell {{ product | titlecase }}
     </button>
   </div>
 </nav>
@@ -47,7 +47,9 @@
         </div>
       </div>
       <div class="col-4 my-auto">
-        <button class="btn btn-primary w-100">Next</button>
+        <a href="/p/product/{{ product }}/deal">
+          <button class="btn btn-primary w-100">Next</button>
+        </a>
         <h6 class="text-center mt-2">
           With click button above you agree with our T&C
         </h6>

@@ -8,7 +8,7 @@ const routes: Routes = [
     component: ProtectedComponent,
     children: [
       {
-        path: 'transaction',
+        path: 'product',
         loadChildren: () =>
           import('./transaction/transaction.module').then((m) => {
             return m.TransactionModule;

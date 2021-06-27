@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Pocket } from '../model/Pocket';
+import * as data from '../../../../../assets/product-data';
 
 @Injectable({
   providedIn: 'root',
@@ -57,5 +58,22 @@ export class TransactionService {
         return res.json();
       })
       .catch((err) => console.log(err));
+  }
+
+  makeDeal(product: any): Promise<any> {
+    return fetch(`${environment.apiSource}transaction`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(product),
+    }).then((data) => {
+      return data.json();
+    });
+  }
+
+  getData(): any {
+    return data.default;
   }
 }
