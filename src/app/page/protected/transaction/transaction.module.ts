@@ -9,14 +9,24 @@ import { ProfileStatusComponent } from './component/profile-status/profile-statu
 import { PocketStatusComponent } from './component/pocket-status/pocket-status.component';
 import { BuySellComponent } from './component/buy-sell/buy-sell.component';
 import { PriceGraphComponent } from './component/price-graph/price-graph.component';
+import { TransactionService } from './service/transaction.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [TransactionComponent, ProfileStatusComponent, PocketStatusComponent, BuySellComponent, PriceGraphComponent],
+  declarations: [
+    TransactionComponent,
+    ProfileStatusComponent,
+    PocketStatusComponent,
+    BuySellComponent,
+    PriceGraphComponent,
+  ],
   imports: [
     CommonModule,
     TransactionRoutingModule,
     TemplateModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
+  providers: [TransactionService],
 })
 export class TransactionModule {}
