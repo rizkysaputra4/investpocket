@@ -12,6 +12,9 @@ import { PriceGraphComponent } from './component/price-graph/price-graph.compone
 import { TransactionService } from './service/transaction.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { PocketNamePipe } from './pipe/pocket-name.pipe';
+import { PricePocketPipe } from './pipe/price-pocket.pipe';
+
 @NgModule({
   declarations: [
     TransactionComponent,
@@ -19,6 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PocketStatusComponent,
     BuySellComponent,
     PriceGraphComponent,
+    PocketNamePipe,
+    PricePocketPipe,
   ],
   imports: [
     CommonModule,

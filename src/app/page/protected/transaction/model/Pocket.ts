@@ -1,6 +1,6 @@
 export interface Pocket {
   name: string;
-  total: number;
+  price: number;
   qty: number;
   id: string;
 }
