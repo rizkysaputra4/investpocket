@@ -43,7 +43,12 @@ export class PocketStatusComponent implements OnInit {
     this.service.getPocketList().subscribe(
       (data: Pocket[]) => {
         console.log(data);
+
         this.pocketList = data.filter((pocket) => {
+          let allData = this.service.getData();
+          pocket.price =
+            allData.comodityPrice[pocket.productId].priceSell * pocket.qty;
+
           return (
             pocket.productId ===
             this.activatedRoute.snapshot.paramMap.get('productId')
