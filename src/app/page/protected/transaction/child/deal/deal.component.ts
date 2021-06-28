@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pocket } from '../../model/Pocket';
 import { TransactionService } from '../../service/transaction.service';
 
@@ -25,13 +25,14 @@ export class DealComponent implements OnInit {
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
-    private readonly service: TransactionService
+    private readonly service: TransactionService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
     this.deal = new FormGroup({
       qty: new FormControl(null, [Validators.required]),
-      type: new FormControl(null, [Validators.required]),
+      type: new FormControl('', [Validators.required]),
       product: new FormControl(
         this.activatedRoute.snapshot.paramMap.get('productId')
       ),
@@ -75,8 +76,18 @@ export class DealComponent implements OnInit {
       (err) => console.log(err)
     );
 
-    this.service.makeDeal(this.deal.value).subscribe(
-      (data) => console.log(data),
+    let transactionData = this.deal.value;
+    console.log('datatata', transactionData);
+    transactionData.total =
+      transactionData.qty *
+      this.data.comodityPrice[this.clickedPocketData.productId].priceBuy;
+    transactionData.date = new Date();
+
+    this.service.makeDeal(transactionData).subscribe(
+      (data) => {
+        let path: string = `/p/product/${this.clickedPocketData.productId}`;
+        this.router.navigate([path]);
+      },
       (err) => console.log(err)
     );
   }
