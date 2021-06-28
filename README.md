@@ -1,6 +1,6 @@
 # Goldpocket
 
-Visit [https://investpocket.vercel.app/login](https://investpocket.vercel.app/login) for the app Demo.
+Visit [https://investpocket.vercel.app](https://investpocket.vercel.app) for the app Demo.
 
 Use this credential to login:
 
