@@ -37,8 +37,8 @@
           <select
             class="custom-select mr-sm-2 m-2"
             id="inlineFormCustomSelect"
-            formControlName="type"
             [(ngModel)]="clickedPocketData"
+            [ngModelOptions]="{ standalone: true }"
           >
             <option *ngFor="let option of pocketList" [ngValue]="option">
               {{ option.name }}

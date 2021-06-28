@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
       0;
-    console.log(verticalOffset);
+
     if (this.transparentNavbar != '') {
       if (verticalOffset > 50) {
         this.bgColor = 'bg-light';

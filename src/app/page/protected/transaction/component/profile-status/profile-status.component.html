@@ -5,16 +5,11 @@
         <img src="../../../../../../assets/images/{{ product }}.png" alt="" />
       </div>
       <div class="col my-auto">
-        <h5>Your {{ product }} Amount</h5>
+        <h5>Your {{ total.product }} Amount</h5>
         <h3>
-          {{
-            data.pocket[product].qty * data.comodityPrice[product].priceSell
-              | pricePocket
-          }}
+          {{ total.price | pricePocket }}
         </h3>
-        <h5>
-          {{ product | titlecase }} Amount {{ data.pocket[product].qty }} Gram
-        </h5>
+        <h5>{{ total.product | titlecase }} Amount {{ total.qty }} Gram</h5>
       </div>
     </div>
   </div>
