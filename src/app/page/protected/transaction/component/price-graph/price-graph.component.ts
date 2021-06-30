@@ -12,6 +12,7 @@ import * as CanvasJS from '../../../../../../assets/canvasjs.min.js';
 })
 export class PriceGraphComponent implements OnInit {
   product: string = 'gold';
+  isOnline: boolean = false;
   productPrice: ProductPrice[] = [];
 
   constructor(
@@ -25,6 +26,7 @@ export class PriceGraphComponent implements OnInit {
 
     this.service.getPriceList(this.product).subscribe(
       (data) => {
+        this.isOnline = false;
         this.productPrice = data;
 
         let priceBuy: any = [];
@@ -82,7 +84,10 @@ export class PriceGraphComponent implements OnInit {
 
         chart.render();
       },
-      (err) => console.log(err)
+      (err) => {
+        console.log(err);
+        this.isOnline = true;
+      }
     );
   }
 
