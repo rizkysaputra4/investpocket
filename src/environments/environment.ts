@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiSource: 'https://60a59b18c0c1fd00175f4124.mockapi.io/api/v1/',
+  priceSource: 'http://localhost:8081/',
 };
 
 /*

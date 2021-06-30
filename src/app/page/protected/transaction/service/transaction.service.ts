@@ -59,6 +59,15 @@ export class TransactionService {
     );
   }
 
+  getPriceList(product: string): Observable<any> {
+    return this.http.get(`${environment.priceSource}/price/${product}`).pipe(
+      retry(3),
+      map((data: any) => {
+        return data;
+      })
+    );
+  }
+
   getData(): any {
     return data.default;
   }
