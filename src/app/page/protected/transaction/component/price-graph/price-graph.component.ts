@@ -4,6 +4,7 @@ import Product from 'src/app/page/public/home/model/product';
 import ProductPrice from '../../model/ProductPrice';
 import { TransactionService } from '../../service/transaction.service';
 import * as CanvasJS from '../../../../../../assets/canvasjs.min.js';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-price-graph',
@@ -25,20 +26,20 @@ export class PriceGraphComponent implements OnInit {
       this.activatedRoute.snapshot.paramMap.get('productId') || 'gold';
 
     this.service.getPriceList(this.product).subscribe(
-      (data) => {
+      (datas) => {
         this.isOnline = false;
-        this.productPrice = data;
+        this.productPrice = datas;
 
         let priceBuy: any = [];
         let priceSell: any = [];
         this.productPrice.forEach((data) => {
           priceBuy.push({
             y: data.priceBuy,
-            label: this.dateFormatter(data.date),
+            label: dayjs(data.date).format('DD MMM YYYY'),
           });
           priceSell.push({
             y: data.priceSell,
-            label: this.dateFormatter(data.date),
+            label: dayjs(data.date).format('DD MMM YYYY'),
           });
         });
 
@@ -89,13 +90,6 @@ export class PriceGraphComponent implements OnInit {
         this.isOnline = true;
       }
     );
-  }
-
-  dateFormatter(d: Date): string {
-    let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
-    let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
-    let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
-    return `${da}-${mo}-${ye}`;
   }
 
   titleCaseFormatter(s: string): string {

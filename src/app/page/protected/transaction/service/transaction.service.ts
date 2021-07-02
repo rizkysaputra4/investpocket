@@ -12,7 +12,7 @@ export class TransactionService {
   constructor(private readonly http: HttpClient) {}
 
   addPocket(pocket: Pocket): Observable<any> {
-    return this.http.post(`${environment.apiSource}pocket`, pocket).pipe(
+    return this.http.post(`${environment.api}api/pocket`, pocket).pipe(
       retry(3),
       map((res: any) => {
         return res;
@@ -21,7 +21,7 @@ export class TransactionService {
   }
 
   getPocketList(): Observable<any> {
-    return this.http.get(`${environment.apiSource}pocket`).pipe(
+    return this.http.get(`${environment.api}api/pocket`).pipe(
       retry(3),
       map((res: any) => {
         return res;
@@ -30,7 +30,7 @@ export class TransactionService {
   }
 
   deletePocket(id: string): Observable<any> {
-    return this.http.delete(`${environment.apiSource}pocket/${id}`).pipe(
+    return this.http.delete(`${environment.api}api/pocket/${id}`).pipe(
       retry(5),
       map((data: any) => {
         return data;
@@ -40,7 +40,7 @@ export class TransactionService {
 
   updatePocket(pocket: Pocket): Observable<any> {
     return this.http
-      .put(`${environment.apiSource}pocket/${pocket.id}`, pocket)
+      .put(`${environment.api}api/pocket/${pocket.id}`, pocket)
       .pipe(
         retry(3),
         map((res: any) => {
@@ -50,7 +50,7 @@ export class TransactionService {
   }
 
   makeDeal(product: any): Observable<any> {
-    return this.http.post(`${environment.apiSource}transaction`, product).pipe(
+    return this.http.post(`${environment.api}api/transaction`, product).pipe(
       retry(3),
       map((data: any) => {
         return data;
@@ -59,7 +59,7 @@ export class TransactionService {
   }
 
   getPriceList(product: string): Observable<any> {
-    return this.http.get(`${environment.priceSource}/price/${product}`).pipe(
+    return this.http.get(`${environment.api}apiLocal/price/${product}`).pipe(
       retry(3),
       map((data: any) => {
         return data;
@@ -68,7 +68,7 @@ export class TransactionService {
   }
 
   getData(product: string): Observable<any> {
-    return this.http.get(`${environment.priceSource}/price/${product}`).pipe(
+    return this.http.get(`${environment.api}apiLocal/price/${product}`).pipe(
       retry(3),
       map((data: any) => {
         return data;

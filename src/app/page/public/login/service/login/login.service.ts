@@ -15,7 +15,7 @@ export class LoginService {
 
   loggedIn(userName: string, password: string): Observable<any> {
     return this.http
-      .get(`${environment.apiSource}user?userName=${userName}`)
+      .get(`${environment.api}api/user?userName=${userName}`)
       .pipe(
         retry(2),
         map((data) => {

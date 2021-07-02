@@ -1,0 +1,36 @@
+version: "2"
+
+services:
+  app-server:
+    image: "investpocketf-be:latest"
+    build:
+      context: ./price-service
+      dockerfile: Dockerfile
+    container_name: "investpocket-be"
+    ports:
+      - 8081:8081
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/comodity-price
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    networks:
+      - backend
+      - frontend
+
+  app-client:
+    image: "investpocket-fe:latest"
+    build: .
+    ports:
+      - 80:80
+    container_name: investpocket-fe
+    restart: always
+    depends_on:
+      - app-server
+    networks:
+      - frontend
+    links:
+      - app-server
+
+networks:
+  backend:
+  frontend:

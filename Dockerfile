@@ -1,4 +1,4 @@
-FROM node as angular_build
+FROM node:16-alpine as angular_build
 
 WORKDIR /app
 COPY . .
