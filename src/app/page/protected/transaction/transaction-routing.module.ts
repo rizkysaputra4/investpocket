@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DealComponent } from './child/deal/deal.component';
 import { TransactionComponent } from './transaction.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: TransactionComponent,

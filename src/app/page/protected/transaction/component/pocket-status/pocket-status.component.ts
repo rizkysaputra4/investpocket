@@ -66,7 +66,7 @@ export class PocketStatusComponent implements OnInit {
       this.activatedRoute.snapshot.paramMap.get('productId') || 'gold';
 
     let submit = this.service.addPocket(this.pocket.value);
-
+    this.pocketList.push(pocket);
     submit.subscribe(
       (data) => {
         console.log(data);

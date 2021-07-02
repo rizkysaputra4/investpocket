@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { User } from '../../model/User';
 import { LoginService } from '../../service/login/login.service';
 
 @Component({
@@ -56,7 +54,9 @@ export class LoginFormComponent implements OnInit {
         }
         alert('try username: boymen, password: boymen');
       },
-      (err) => console.log(err)
+      (err) => {
+        alert('try username: boymen, password: boymen');
+      }
     );
   }
 }

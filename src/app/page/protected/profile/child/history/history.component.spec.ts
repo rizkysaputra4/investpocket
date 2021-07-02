@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ProfileService } from '../../service/profile.service';
 
 import { HistoryComponent } from './history.component';
 
@@ -8,9 +10,10 @@ describe('HistoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HistoryComponent ]
-    })
-    .compileComponents();
+      declarations: [HistoryComponent],
+      imports: [HttpClientModule],
+      providers: [ProfileService],
+    }).compileComponents();
   });
 
   beforeEach(() => {
