@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { map, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Pocket } from '../model/Pocket';
-import * as data from '../../../../../assets/product-data';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -68,7 +67,12 @@ export class TransactionService {
     );
   }
 
-  getData(): any {
-    return data.default;
+  getData(product: string): Observable<any> {
+    return this.http.get(`${environment.priceSource}/price/${product}`).pipe(
+      retry(3),
+      map((data: any) => {
+        return data;
+      })
+    );
   }
 }

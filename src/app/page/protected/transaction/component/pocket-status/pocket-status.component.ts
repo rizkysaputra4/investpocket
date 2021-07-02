@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { User } from 'src/app/page/public/login/model/User';
 import { Pocket } from '../../model/Pocket';
+import ProductPrice from '../../model/ProductPrice';
 import { TransactionService } from '../../service/transaction.service';
 
 @Component({
@@ -44,16 +45,21 @@ export class PocketStatusComponent implements OnInit {
       (data: Pocket[]) => {
         console.log(data);
 
-        this.pocketList = data.filter((pocket) => {
-          let allData = this.service.getData();
-          pocket.price =
-            allData.comodityPrice[pocket.productId].priceSell * pocket.qty;
+        this.service
+          .getData(
+            this.activatedRoute.snapshot.paramMap.get('productId') || 'gold'
+          )
+          .subscribe((priceData: ProductPrice[]) => {
+            this.pocketList = data.filter((pocket) => {
+              pocket.price =
+                priceData[priceData.length - 1].priceSell * pocket.qty;
 
-          return (
-            pocket.productId ===
-            this.activatedRoute.snapshot.paramMap.get('productId')
-          );
-        });
+              return (
+                pocket.productId ===
+                this.activatedRoute.snapshot.paramMap.get('productId')
+              );
+            });
+          });
       },
       (err) => console.log(err)
     );
