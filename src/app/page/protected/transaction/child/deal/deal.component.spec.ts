@@ -7,26 +7,12 @@ import {
 } from '@angular/core/testing';
 import { FormControl, FormGroup } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { routes } from 'src/app/app-routing.module';
 import { Pocket } from '../../model/Pocket';
 import { TransactionService } from '../../service/transaction.service';
 import { TransactionComponent } from '../../transaction.component';
 
 import { DealComponent } from './deal.component';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: TransactionComponent,
-  },
-  {
-    path: ':productId',
-    component: TransactionComponent,
-  },
-  {
-    path: ':productId/deal',
-    component: DealComponent,
-  },
-];
 
 describe('DealComponent', () => {
   let component: DealComponent;

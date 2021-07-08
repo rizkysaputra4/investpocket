@@ -42,7 +42,9 @@ export class PocketStatusComponent implements OnInit {
 
     this.service.getPocketList().subscribe(
       (data: Pocket[]) => {
-        console.log(data);
+        if (!data.length) {
+          return;
+        }
 
         this.pocketList = data.filter((pocket) => {
           let allData = this.service.getData();
