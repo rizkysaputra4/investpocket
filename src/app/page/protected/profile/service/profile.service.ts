@@ -12,11 +12,8 @@ export class ProfileService {
   constructor(private readonly http: HttpClient) {}
 
   getTransactionHistory(): Observable<Transaction[]> {
-    return this.http.get(`${environment.api}api/transaction`).pipe(
-      retry(3),
-      map((res: any) => {
-        return res;
-      })
-    );
+    return this.http
+      .get<Transaction[]>(`${environment.api}api/transaction`)
+      .pipe(retry(3));
   }
 }

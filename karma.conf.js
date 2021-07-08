@@ -45,5 +45,24 @@ module.exports = function (config) {
         ["coverage"],
     },
     exclude: ["./src/assets/*.js"],
+    proxies: {
+      "/apiLocal/*": {
+        target: "http://localhost:8081/",
+        secure: false,
+        logLevel: "debug",
+        pathRewrite: {
+          "^/apiLocal": "",
+        },
+      },
+      "/api/*": {
+        target: "https://60a59b18c0c1fd00175f4124.mockapi.io/api/v1/",
+        secure: false,
+        logLevel: "debug",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": "",
+        },
+      },
+    },
   });
 };
