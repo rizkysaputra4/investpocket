@@ -1,0 +1,5 @@
+com/investpocket/priceservice/repository/PriceRepository.class
+com/investpocket/priceservice/service/PriceServiceImpl.class
+com/investpocket/priceservice/PriceServiceApplication.class
+com/investpocket/priceservice/entity/Comodity.class
+com/investpocket/priceservice/controller/PriceController.class

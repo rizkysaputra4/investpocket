@@ -98,7 +98,7 @@
             "styles": ["src/styles.scss"],
             "scripts": [],
             "codeCoverageExclude": [
-              "src/assets", "src/app/page/protected/transaction/component/price-graph/price-graph.component.ts"
+              "src/assets/**.js", "src/app/page/protected/transaction/component/price-graph/**.ts"
           ]
           }
         }

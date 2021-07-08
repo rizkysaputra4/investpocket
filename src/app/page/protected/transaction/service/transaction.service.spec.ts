@@ -106,6 +106,7 @@ describe('TransactionService', () => {
             expect(response.productId).toBe('silver');
           },
           (err) => {
+            console.log(err);
             expect(err).toBeTruthy();
           }
         );
