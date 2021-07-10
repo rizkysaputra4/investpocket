@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pocket } from '../../model/Pocket';
+import ProductPrice from '../../model/ProductPrice';
 import { TransactionService } from '../../service/transaction.service';
 
 @Component({
@@ -10,7 +11,6 @@ import { TransactionService } from '../../service/transaction.service';
   styleUrls: ['./deal.component.scss'],
 })
 export class DealComponent implements OnInit {
-  data: any = {};
   deal: FormGroup = new FormGroup({});
   transactionType: string = '';
   pocketList: Pocket[] = [];
@@ -37,8 +37,6 @@ export class DealComponent implements OnInit {
         this.activatedRoute.snapshot.paramMap.get('productId')
       ),
     });
-
-    this.data = this.service.getData();
 
     this.service.getPocketList().subscribe(
       (data: Pocket[]) => {
@@ -76,20 +74,23 @@ export class DealComponent implements OnInit {
       (err) => console.log(err)
     );
 
-    let transactionData = this.deal.value;
-    console.log('datatata', transactionData);
-    transactionData.total =
-      transactionData.qty *
-      this.data.comodityPrice[this.clickedPocketData.productId].priceBuy;
-    transactionData.date = new Date();
+    this.service
+      .getData(this.product)
+      .subscribe((productPrice: ProductPrice[]) => {
+        let transactionData = this.deal.value;
+        console.log('datatata', transactionData);
+        transactionData.total =
+          transactionData.qty * productPrice[productPrice.length - 1].priceBuy;
+        transactionData.date = new Date();
 
-    this.service.makeDeal(transactionData).subscribe(
-      (data) => {
-        let path: string = `/p/product/${this.clickedPocketData.productId}`;
-        this.router.navigate([path]);
-      },
-      (err) => console.log(err)
-    );
+        this.service.makeDeal(transactionData).subscribe(
+          (data) => {
+            let path: string = `/p/product/${this.clickedPocketData.productId}`;
+            this.router.navigate([path]);
+          },
+          (err) => console.log(err)
+        );
+      });
   }
 
   changeClickedPocket(pocket: Pocket) {
