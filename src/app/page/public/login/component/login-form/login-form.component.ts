@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { User } from '../../model/User';
 import { LoginService } from '../../service/login/login.service';
 
 @Component({
@@ -38,8 +36,8 @@ export class LoginFormComponent implements OnInit {
 
     let login = this.loginService.loggedIn(this.userName, this.password);
 
-    login
-      .then((data) => {
+    login.subscribe(
+      (data) => {
         for (let i = 0; i < data.length; i++) {
           console.log(data[i]);
           if (
@@ -55,7 +53,10 @@ export class LoginFormComponent implements OnInit {
           }
         }
         alert('try username: boymen, password: boymen');
-      })
-      .catch((err) => console.log(err));
+      },
+      (err) => {
+        alert('try username: boymen, password: boymen');
+      }
+    );
   }
 }

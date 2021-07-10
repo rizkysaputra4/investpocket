@@ -11,7 +11,7 @@ import { TransactionService } from '../../service/transaction.service';
   styleUrls: ['./pocket-status.component.scss'],
 })
 export class PocketStatusComponent implements OnInit {
-  pocketList: Promise<Pocket[]> = new Promise((res) => res);
+  pocketList: Pocket[] = [];
   pocket: FormGroup = new FormGroup({});
   pocketEdit: FormGroup = new FormGroup({});
   clickedPocketData: Pocket = {
@@ -40,22 +40,25 @@ export class PocketStatusComponent implements OnInit {
       qty: new FormControl(this.clickedPocketData.qty),
     });
 
-    this.pocketList = new Promise((resolve) => {
-      this.service
-        .getPocketList()
-        .then((data: Pocket[]) => {
-          console.log(data);
-          resolve(
-            data.filter((pocket) => {
-              return (
-                pocket.productId ===
-                this.activatedRoute.snapshot.paramMap.get('productId')
-              );
-            })
+    this.service.getPocketList().subscribe(
+      (data: Pocket[]) => {
+        if (!data.length) {
+          return;
+        }
+
+        this.pocketList = data.filter((pocket) => {
+          let allData = this.service.getData();
+          pocket.price =
+            allData.comodityPrice[pocket.productId].priceSell * pocket.qty;
+
+          return (
+            pocket.productId ===
+            this.activatedRoute.snapshot.paramMap.get('productId')
           );
-        })
-        .catch((err) => console.log(err));
-    });
+        });
+      },
+      (err) => console.log(err)
+    );
   }
 
   onSubmit(): void {
@@ -65,38 +68,24 @@ export class PocketStatusComponent implements OnInit {
       this.activatedRoute.snapshot.paramMap.get('productId') || 'gold';
 
     let submit = this.service.addPocket(this.pocket.value);
-    submit
-      .then((data) => {
+    this.pocketList.push(pocket);
+    submit.subscribe(
+      (data) => {
         console.log(data);
         this.ngOnInit();
-      })
-      .catch((err) => console.log(err));
-  }
-
-  async getPocketList(): Promise<Pocket[]> {
-    let pockets: Pocket[] = [];
-
-    this.service
-      .getPocketList()
-      .then((data) => {
-        console.log(data);
-        pockets = data;
-      })
-      .catch((err) => console.log(err));
-
-    return pockets;
+      },
+      (err) => console.log(err)
+    );
   }
 
   deletePocket(id: string) {
-    this.service
-      .deletePocket(id)
-      .then((data) => {
+    this.service.deletePocket(id).subscribe(
+      (data) => {
         console.log(data);
         this.ngOnInit();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      },
+      (err) => console.log(err)
+    );
   }
 
   updatePocket() {
@@ -104,13 +93,14 @@ export class PocketStatusComponent implements OnInit {
     pocket.id = this.clickedPocketData.id;
     pocket.productId =
       this.activatedRoute.snapshot.paramMap.get('productId') || '1';
-    this.service
-      .updatePocket(pocket)
-      .then((res) => {
-        console.log(res);
+
+    this.service.updatePocket(pocket).subscribe(
+      (data) => {
+        console.log(data);
         this.ngOnInit();
-      })
-      .catch((err) => console.log(err));
+      },
+      (err) => console.log(err)
+    );
   }
 
   changeClickedPocketId(pocket: Pocket) {

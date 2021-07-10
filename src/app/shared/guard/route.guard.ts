@@ -24,6 +24,7 @@ export class RouteGuard implements CanActivate, CanActivateChild {
     if (!credentials) {
       sessionStorage.setItem('redirectBackUrl', activatedState.url);
       this.router.navigateByUrl('/login');
+      return false;
     }
 
     return true;
@@ -33,6 +34,7 @@ export class RouteGuard implements CanActivate, CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
+    console.log(this.authorize(route, state));
     return this.authorize(route, state);
   }
 

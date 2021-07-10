@@ -1,9 +1,9 @@
 <div class="d-flex flex-row bd-highlight mb-3 my-4">
   <div class="testimonial-group">
-    <div class="row text-center mx-1">
+    <div class="row mx-1">
       <div
         class="p-2 bd-highlight card m-3 pocketCard col-auto"
-        *ngFor="let pocket of pocketList | async; let i = index"
+        *ngFor="let pocket of pocketList; let i = index"
       >
         <div class="card-body">
           <h3>{{ pocket.name | pocketName }}</h3>
@@ -19,7 +19,7 @@
           </button>
           <button
             (click)="deletePocket(pocket.id)"
-            class="card-link btn btn-primary btn-sm"
+            class="card-link btn btn-danger btn-sm"
           >
             Delete
           </button>
@@ -28,7 +28,7 @@
     </div>
   </div>
   <button
-    class="btn btn-primary m-3 addPocketBtn"
+    class="btn btn-warning m-3 addPocketBtn"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
   >

@@ -2,13 +2,15 @@
   <div class="container my-4">
     <div
       class="card"
-      *ngFor="let transaction of [].constructor(3); let i = index"
+      *ngFor="let transaction of transactionList; let i = index"
     >
       <table class="table table-borderless">
         <thead>
           <tr>
-            <th scope="col">Buy</th>
-            <th style="width: 25%" scope="col">25 March 2021</th>
+            <th scope="col">{{ transaction.type | titlecase }}</th>
+            <th style="width: 25%" scope="col">
+              {{ transaction.date | date: "medium" }}
+            </th>
           </tr>
           <tr>
             <th>Product</th>
@@ -17,12 +19,14 @@
         <thead></thead>
         <tbody>
           <tr>
-            <td scope="row">Product name: Gold</td>
+            <td scope="row">
+              Product name: {{ transaction.product | titlecase }}
+            </td>
             <td>Total Price</td>
           </tr>
           <tr>
-            <td scope="row">Quantity 1 gr</td>
-            <th>Rp. 850.000</th>
+            <td scope="row">Quantity {{ transaction.qty }} gr</td>
+            <th>{{ transaction.total | currencyID }}</th>
           </tr>
           <tr>
             <td></td>

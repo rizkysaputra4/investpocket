@@ -94,7 +94,10 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "codeCoverageExclude": [
+              "src/assets/**.js", "src/app/page/protected/transaction/component/price-graph/**.ts"
+          ]
           }
         }
       }

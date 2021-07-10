@@ -1,76 +1,71 @@
 import { Injectable } from '@angular/core';
-import { retry } from 'rxjs/operators';
+import { map, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Pocket } from '../model/Pocket';
 import * as data from '../../../../../assets/product-data';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionService {
-  constructor() {}
+  constructor(private readonly http: HttpClient) {}
 
-  addPocket(pocket: Pocket): Promise<any> {
-    return fetch(`${environment.apiSource}pocket`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(pocket),
-    }).then((data) => {
-      return data.json();
-    });
-  }
-
-  getPocketList(): Promise<any> {
-    return fetch(`${environment.apiSource}pocket`)
-      .then((res) => {
-        return res.json();
+  addPocket(pocket: Pocket): Observable<any> {
+    return this.http.post(`${environment.apiSource}pocket`, pocket).pipe(
+      retry(3),
+      map((res: any) => {
+        return res;
       })
-      .catch((err) => console.log(err));
+    );
   }
 
-  deletePocket(id: string): Promise<any> {
-    return fetch(`${environment.apiSource}pocket/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => {
-        return res.json();
+  getPocketList(): Observable<any> {
+    return this.http.get(`${environment.apiSource}pocket`).pipe(
+      retry(3),
+      map((res: any) => {
+        return res;
       })
-      .catch((err) => console.log(err));
+    );
   }
 
-  updatePocket(pocket: Pocket): Promise<any> {
-    return fetch(`${environment.apiSource}pocket/${pocket.id}`, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(pocket),
-    })
-      .then((res) => {
-        return res.json();
+  deletePocket(id: string): Observable<any> {
+    return this.http.delete(`${environment.apiSource}pocket/${id}`).pipe(
+      retry(5),
+      map((data: any) => {
+        return data;
       })
-      .catch((err) => console.log(err));
+    );
   }
 
-  makeDeal(product: any): Promise<any> {
-    return fetch(`${environment.apiSource}transaction`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(product),
-    }).then((data) => {
-      return data.json();
-    });
+  updatePocket(pocket: Pocket): Observable<any> {
+    return this.http
+      .put(`${environment.apiSource}pocket/${pocket.id}`, pocket)
+      .pipe(
+        retry(3),
+        map((res: any) => {
+          return res;
+        })
+      );
+  }
+
+  makeDeal(product: any): Observable<any> {
+    return this.http.post(`${environment.apiSource}transaction`, product).pipe(
+      retry(3),
+      map((data: any) => {
+        return data;
+      })
+    );
+  }
+
+  getPriceList(product: string): Observable<any> {
+    return this.http.get(`${environment.priceSource}/price/${product}`).pipe(
+      retry(3),
+      map((data: any) => {
+        return data;
+      })
+    );
   }
 
   getData(): any {

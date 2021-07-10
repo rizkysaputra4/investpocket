@@ -8,6 +8,8 @@ import { TemplateModule } from 'src/app/template/template.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileComponent } from './profile.component';
 import { HistoryComponent } from './child/history/history.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileService } from './service/profile.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,13 @@ import { HistoryComponent } from './child/history/history.component';
     ContentComponent,
     HistoryComponent,
   ],
-  imports: [CommonModule, ProfileRoutingModule, TemplateModule, SharedModule],
+  imports: [
+    CommonModule,
+    ProfileRoutingModule,
+    TemplateModule,
+    SharedModule,
+    HttpClientModule,
+  ],
+  providers: [ProfileService],
 })
 export class ProfileModule {}
