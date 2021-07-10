@@ -1,0 +1,54 @@
+<div class="vertical-center">
+  <div class="container">
+    <div class="login-container">
+      <h2 class="text-center">Sign In</h2>
+      <form [formGroup]="loginForm">
+        <div class="group">
+          <input
+            type="text"
+            required
+            class=""
+            formControlName="userName"
+            aria-describedby="emailHelp"
+          />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Name</label>
+        </div>
+
+        <div class="group">
+          <input
+            type="password"
+            required
+            class=""
+            formControlName="password"
+            id="exampleInputPassword1"
+          />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Password</label>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-light btn-login w-100"
+          (click)="clickLogin()"
+        >
+          Submit
+        </button>
+      </form>
+
+      <div class="platform-login mx-auto">
+        <p class="text-center mt-4">Or login with social platform</p>
+        <div class="container row mx-auto">
+          <div
+            *ngFor="let image of loginPlatform"
+            class="login-platform col mx-1"
+          >
+            <img src="../../../../../assets/icons/{{ image }} " alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

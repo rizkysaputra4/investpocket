@@ -3,13 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeModule } from './page/home/home.module';
-import { FooterComponent } from './shared/component/footer/footer.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeModule } from './page/public/home/home.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HomeModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, HomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })

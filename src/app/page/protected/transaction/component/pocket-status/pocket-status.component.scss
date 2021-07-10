@@ -1,0 +1,44 @@
+.testimonial-group {
+  width: 90%;
+}
+
+.addPocketBtn {
+  width: 10%;
+}
+
+/* The heart of the matter */
+.testimonial-group > .row {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.testimonial-group > .row > .pocketCard {
+  display: inline-block;
+}
+
+/* Decorations */
+.pocketCard {
+  color: #fff;
+
+  padding-bottom: 20px;
+  padding-top: 18px;
+}
+.pocketCard:nth-child(3n + 1) {
+  background: #c69;
+}
+.pocketCard:nth-child(3n + 2) {
+  background: #9c6;
+}
+.pocketCard:nth-child(3n + 3) {
+  background: #69c;
+}
+
+@media only screen and (max-width: 320px) {
+  .testimonial-group {
+    width: 80%;
+  }
+
+  .addPocketBtn {
+    width: 20%;
+  }
+}

@@ -1,0 +1,57 @@
+<app-template>
+  <div class="container card">
+    <div class="card-body">
+      <div>
+        <h5>{{ product | titlecase }} Transaction</h5>
+        <hr />
+      </div>
+      <form [formGroup]="deal" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Quantity gr</label>
+          <input
+            type="number"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            formControlName="qty"
+          />
+        </div>
+        <div class="col-auto my-1 d-flex justify-content-between">
+          <label class="mr-sm-2" for="inlineFormCustomSelect"
+            >Transaction type</label
+          >
+          <select
+            class="custom-select mr-sm-2 m-2"
+            id="inlineFormCustomSelect"
+            formControlName="type"
+          >
+            <option *ngFor="let option of ['buy', 'sell']" [ngValue]="option">
+              {{ option }}
+            </option>
+          </select>
+        </div>
+        <div class="col-auto my-1 d-flex justify-content-between">
+          <label class="mr-sm-2" for="inlineFormCustomSelect"
+            >From Pocket</label
+          >
+          <select
+            class="custom-select mr-sm-2 m-2"
+            id="inlineFormCustomSelect"
+            formControlName="type"
+            [(ngModel)]="clickedPocketData"
+          >
+            <option
+              *ngFor="let option of pocketList | async"
+              [ngValue]="option"
+            >
+              {{ option.name }}
+            </option>
+          </select>
+        </div>
+        <button class="btn btn-primary w-100 mt-3" [disabled]="data.invalid">
+          submit
+        </button>
+      </form>
+    </div>
+  </div>
+</app-template>

@@ -1,12 +1,35 @@
 # Goldpocket
 
-Visit [https://goldpocket.herokuapp.com/](https://goldpocket.herokuapp.com/) for the app Demo
+Visit [https://investpocket.vercel.app/login](https://investpocket.vercel.app/login) for the app Demo.
+
+Use this credential to login:
+
+```
+username    : boymen
+password    : boymen
+```
 
 ## Sample Result
 
-![screenshoot](./image/1.png)
-![screenshoot](./image/2.png)
-![screenshoot](./image/3.png)
+path: /
+
+<img src="./image/1.png" height="300" />
+
+path: /login
+
+<img src="./image/2.png" height="300" />
+
+path: /p/transaction
+
+<img src="./image/3.png" height="300" />
+
+path: /p/profile
+
+<img src="./image/4.png" height="300" />
+
+path: /p/profile/history
+
+<img src="./image/5.png" height="300" />
 
 ## Prequisities:
 
@@ -24,7 +47,7 @@ git clone https://git.enigmacamp.com/enigma-camp/class-mandiri/rizky-saputra/ang
 3.
 
 ```
-cd goldpocket
+cd challenge-angular
 ```
 
 4.
@@ -36,7 +59,7 @@ npm install
 5.
 
 ```
-npm start
+npm devStart
 ```
 
 6. Open `localhost:4200` on your browser.

@@ -1,0 +1,21 @@
+<div>
+  <h3>Why Mandiri Gold?</h3>
+
+  <div class="row">
+    <ng-container *ngFor="let item of items; let i = index">
+      <div *ngIf="isDifferentSection(i)" class="w-100"></div>
+
+      <div class="col-sm p-3">
+        <div class="card feature-card h-100 col p-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <h3 class="mt-4 mb-4">Let's join us for free</h3>
+  <button class="register-btn">Register</button>
+</div>

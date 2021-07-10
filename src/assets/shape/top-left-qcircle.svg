@@ -1,0 +1,21 @@
+  <svg
+    width="600"
+    viewBox="0 0 501 501"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <mask
+      id="mask0"
+      mask-type="alpha"
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="501"
+      height="501"
+    >
+      <rect width="501" height="501" fill="#DA7E7E" />
+    </mask>
+    <g mask="url(#mask0)">
+      <circle r="500" fill="#FFC100" />
+    </g>
+  </svg>
